@@ -1,3 +1,9 @@
 flask
 joblib
 pandas
+sklearn
+numpy
+matplotlib
+math
+seaborn
+plotly.express
