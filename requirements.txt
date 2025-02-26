@@ -6,4 +6,6 @@ numpy
 matplotlib
 seaborn
 plotly.express
+os
 gunicorn
+
