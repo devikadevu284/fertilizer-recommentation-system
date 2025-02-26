@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 import joblib
 import pandas as pd
+import os
 
 # Load trained model
 model = joblib.load("random_forest_model.joblib")
@@ -51,4 +52,5 @@ def predict():
         return render_template("front_page.html", prediction_text=f"Error: {str(e)}")
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))  # Default to 5000 if not set
+    app.run(host='0.0.0.0', port=port, debug=False)
