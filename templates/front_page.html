@@ -5,54 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fertilizer Recommendation</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <!-- Botpress Chat Bubble Script -->
     <script src="https://cdn.botpress.cloud/webchat/v2.3/inject.js"></script>
     <script src="https://files.bpcontent.cloud/2024/12/04/05/20241204055923-YIY3FY15.js"></script>
-    
-<!-- In your <head> tag -->
-<script src="https://cdn.botpress.cloud/webchat/v2.3/inject.js"></script>
-<style>
-  #webchat .bpWebchat {
-    position: unset;
-    width: 100%;
-    height: 100%;
-    max-height: 100%;
-    max-width: 100%;
-  }
 
-  #webchat .bpFab {
-    display: none;
-  }
-</style>
+    <!-- Style for embedded chatbot -->
+    <style>
+      #webchat .bpWebchat {
+        position: unset;
+        width: 100%;
+        height: 100%;
+        max-height: 100%;
+        max-width: 100%;
+      }
 
-<!-- Put this on your page BEFORE the script below -->
-<div id="webchat" style="width: 500px; height: 500px;"></div>
-
-<!-- In your <body> tag -->
-<script>
-  window.botpress.on("webchat:ready", () => {
-    window.botpress.open();
-  });
-  window.botpress.init({
-  "botId": "4884fa89-2034-4a32-b60b-0fa009b88c12",
-  "configuration": {
-    "website": {},
-    "email": {},
-    "phone": {},
-    "termsOfService": {},
-    "privacyPolicy": {},
-    "color": "#55f53b",
-    "variant": "solid",
-    "themeMode": "light",
-    "fontFamily": "inter",
-    "radius": 4,
-    "additionalStylesheetUrl": "https://files.bpcontent.cloud/2024/12/04/10/20241204104119-UC7L4YR6.css"
-  },
-  "clientId": "918318b9-2bcf-40d9-ab0c-3204748478d8",
-  "selector": "#webchat"
-});
-</script>
-
+      #webchat .bpFab {
+        display: none;
+      }
+    </style>
 </head>
+
 <body>
     <div class="container">
         <h2>Fertilizer Recommendation System</h2>
@@ -98,5 +71,34 @@
             <div class="result">{{ prediction_text }}</div>
         {% endif %}
     </div>
+
+    <!-- Embedded Chatbot Section -->
+    <div id="webchat" style="width: 500px; height: 500px; margin: auto; padding-top: 20px;"></div>
+
+    <!-- Chatbot Initialization Script -->
+    <script>
+      window.botpress.on("webchat:ready", () => {
+        window.botpress.open();
+      });
+
+      window.botpress.init({
+        botId: "4884fa89-2034-4a32-b60b-0fa009b88c12",
+        configuration: {
+          website: {},
+          email: {},
+          phone: {},
+          termsOfService: {},
+          privacyPolicy: {},
+          color: "#55f53b",
+          variant: "solid",
+          themeMode: "light",
+          fontFamily: "inter",
+          radius: 4,
+          additionalStylesheetUrl: "https://files.bpcontent.cloud/2024/12/04/10/20241204104119-UC7L4YR6.css"
+        },
+        clientId: "918318b9-2bcf-40d9-ab0c-3204748478d8",
+        selector: "#webchat"
+      });
+    </script>
 </body>
 </html>
