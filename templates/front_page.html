@@ -23,6 +23,13 @@
       #webchat .bpFab {
         display: none;
       }
+
+      /* Ensure chatbot visibility */
+      #webchat {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+      }
     </style>
 </head>
 
@@ -83,6 +90,7 @@
 
       window.botpress.init({
         botId: "4884fa89-2034-4a32-b60b-0fa009b88c12",
+        clientId: "918318b9-2bcf-40d9-ab0c-3204748478d8",
         configuration: {
           website: {},
           email: {},
@@ -96,9 +104,19 @@
           radius: 4,
           additionalStylesheetUrl: "https://files.bpcontent.cloud/2024/12/04/10/20241204104119-UC7L4YR6.css"
         },
-        clientId: "918318b9-2bcf-40d9-ab0c-3204748478d8",
         selector: "#webchat"
+      });
+    </script>
+
+    <!-- Minimal Botpress Test Setup -->
+    <h1>Testing Botpress Chatbot</h1>
+    <script>
+      window.botpress.init({
+        botId: "4884fa89-2034-4a32-b60b-0fa009b88c12",
+        clientId: "918318b9-2bcf-40d9-ab0c-3204748478d8",
+        "theme": "light"
       });
     </script>
 </body>
 </html>
+
