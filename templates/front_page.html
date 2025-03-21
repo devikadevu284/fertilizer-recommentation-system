@@ -7,24 +7,18 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 
     <!-- Botpress Chatbot Script -->
-    <script src="https://cdn.botpress.cloud/webchat/v2.3/inject.js"></script>
+    <script src="https://cdn.botpress.cloud/webchat/v2/inject.js"></script>
+    <script src="https://mediafiles.botpress.cloud/52345432-5432543-5435-435545434/webchat/v2/config.js"></script>
 
     <!-- Chatbot Custom Styling -->
     <style>
-        #webchat {
-            display: block !important;
-            visibility: visible !important;
-            opacity: 1 !important;
-            width: 400px;
+        .webchat {
             height: 600px;
+            width: 400px;
             position: fixed;
             bottom: 20px;
             right: 20px;
             z-index: 1000;
-        }
-
-        #webchat .bpWebchat {
-            border-radius: 15px;
         }
     </style>
 </head>
@@ -77,24 +71,38 @@
     </div>
 
     <!-- Botpress Chatbot Container -->
-    <div id="webchat"></div>
-
-    <!-- Chatbot Initialization -->
-    <script>
-        window.botpress.on("webchat:ready", () => {
-            window.botpress.open();
-        });
-
-        window.botpress.init({
-            botId: "4884fa89-2034-4a32-b60b-0fa009b88c12", // 🔥 Replace this with your Botpress bot ID
-            clientId: "918318b9-2bcf-40d9-ab0c-3204748478d8", // 🔥 Replace this with your Botpress client ID
-            theme: "light",
-            botName: "FertilizerBot",
-            avatarUrl: "https://cdn-icons-png.flaticon.com/512/2933/2933925.png",
-            stylesheet: "https://cdn.botpress.cloud/webchat/v2.3/style.css",
-            layoutWidth: "400px"
-        });
-    </script>
+    <div class="webchat">
+        <iframe
+            style="height: 100%; width: 100%; border: none;"
+            srcdoc='<!doctype html>
+            <html lang="en">
+              <head></head>
+              <body>
+                <script src="https://cdn.botpress.cloud/webchat/v2.2/inject.js"></script>
+                <script defer>
+                  window.botpress.on("webchat:ready", (conversationId) => {
+                    botpress.open();
+                  });
+                  window.botpress.init({
+                    "botId": "d3aea06d-0f04-4701-bec3-b457caf79902",
+                    "configuration": {
+                      "website": {},
+                      "email": {},
+                      "phone": {},
+                      "termsOfService": {},
+                      "privacyPolicy": {},
+                      "color": "#3B82F6",
+                      "variant": "solid",
+                      "themeMode": "light",
+                      "fontFamily": "inter",
+                      "radius": 1
+                    },
+                    "clientId": "0e772c62-e321-46b5-a9fb-a88c5104e067"
+                  });
+                </script>
+              </body>
+            </html>'
+        ></iframe>
+    </div>
 </body>
 </html>
-
