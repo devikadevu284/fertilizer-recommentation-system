@@ -6,7 +6,7 @@
     <title>Fertilizer Recommendation System</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 
-    <!-- Botpress Chatbot Script -->
+    <!-- Botpress Chatbot -->
     <script src="https://cdn.botpress.cloud/webchat/v2/inject.js"></script>
 
     <style>
@@ -88,7 +88,11 @@
         window.botpress.on("webchat:ready", () => {
             window.botpress.open();
         });
+
+        // Debugging: Show error if chatbot does not load
+        window.botpress.on("webchat:error", (err) => {
+            console.error("Botpress Chatbot Error:", err);
+        });
     </script>
 </body>
 </html>
-
