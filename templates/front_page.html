@@ -69,6 +69,9 @@
         {% endif %}
     </div>
 
+    <!-- Botpress Chatbot Container -->
+    <div id="bp-webchat"></div>
+
     <!-- Chatbot Initialization -->
     <script>
         window.botpressWebChat.init({
@@ -77,7 +80,7 @@
             host: "https://cdn.botpress.cloud/webchat",
             messagingUrl: "https://messaging.botpress.cloud",
             botName: "FertilizerBot",
-            showPoweredBy: false,
+            showPoweredBy: false, // Remove Botpress Branding
             theme: "light",
             layoutWidth: "400px",
             showCloseButton: true,
@@ -85,12 +88,12 @@
         });
 
         // Ensure chatbot opens when ready
-        window.botpress.on("webchat:ready", () => {
-            window.botpress.open();
+        window.botpressWebChat.onEvent("ready", () => {
+            window.botpressWebChat.sendEvent({ type: "show" });
         });
 
         // Debugging: Show error if chatbot does not load
-        window.botpress.on("webchat:error", (err) => {
+        window.botpressWebChat.onEvent("error", (err) => {
             console.error("Botpress Chatbot Error:", err);
         });
     </script>
