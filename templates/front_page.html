@@ -9,15 +9,15 @@
     <!-- Botpress Chatbot Script -->
     <script src="https://cdn.botpress.cloud/webchat/v2/inject.js"></script>
 
-    <!-- Chatbot Custom Styling -->
     <style>
-        .webchat {
-            height: 600px;
-            width: 400px;
+        /* Chatbot Styling */
+        #bp-webchat {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            z-index: 1000;
+            z-index: 9999;
+            width: 400px;
+            height: 600px;
         }
     </style>
 </head>
@@ -69,33 +69,26 @@
         {% endif %}
     </div>
 
-    <!-- Botpress Chatbot Container -->
-    <div class="webchat">
-        <iframe
-            style="height: 100%; width: 100%; border: none;"
-            srcdoc='
-            <!doctype html>
-            <html lang="en">
-              <head></head>
-              <body>
-                <script src="https://cdn.botpress.cloud/webchat/v2/inject.js"></script>
-                <script defer>
-                  window.botpressWebChat.init({
-                    "botId": "d3aea06d-0f04-4701-bec3-b457caf79902",
-                    "clientId": "0e772c62-e321-46b5-a9fb-a88c5104e067",
-                    "host": "https://cdn.botpress.cloud/webchat",
-                    "messagingUrl": "https://messaging.botpress.cloud",
-                    "botName": "FertilizerBot",
-                    "showPoweredBy": false,
-                    "theme": "light",
-                    "layoutWidth": "400px",
-                    "showCloseButton": true,
-                    "stylesheet": "https://cdn.botpress.cloud/webchat/v2/style.css"
-                  });
-                </script>
-              </body>
-            </html>'>
-        </iframe>
-    </div>
+    <!-- Chatbot Initialization -->
+    <script>
+        window.botpressWebChat.init({
+            botId: "d3aea06d-0f04-4701-bec3-b457caf79902", // Your Botpress Bot ID
+            clientId: "0e772c62-e321-46b5-a9fb-a88c5104e067", // Your Botpress Client ID
+            host: "https://cdn.botpress.cloud/webchat",
+            messagingUrl: "https://messaging.botpress.cloud",
+            botName: "FertilizerBot",
+            showPoweredBy: false,
+            theme: "light",
+            layoutWidth: "400px",
+            showCloseButton: true,
+            stylesheet: "https://cdn.botpress.cloud/webchat/v2/style.css"
+        });
+
+        // Ensure chatbot opens when ready
+        window.botpress.on("webchat:ready", () => {
+            window.botpress.open();
+        });
+    </script>
 </body>
 </html>
+
