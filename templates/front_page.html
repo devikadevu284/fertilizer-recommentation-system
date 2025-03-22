@@ -6,9 +6,6 @@
     <title>Fertilizer Recommendation System</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 
-    <!-- Botpress Chatbot -->
-    <script src="https://cdn.botpress.cloud/webchat/v2/inject.js"></script>
-
     <style>
         /* Chatbot Styling */
         #bp-webchat {
@@ -72,31 +69,35 @@
     <!-- Botpress Chatbot Container -->
     <div id="bp-webchat"></div>
 
-    <!-- Chatbot Initialization -->
+    <!-- Botpress Scripts -->
+    <script defer src="https://cdn.botpress.cloud/webchat/v2/inject.js"></script>
     <script>
-        window.botpressWebChat.init({
-            botId: "d3aea06d-0f04-4701-bec3-b457caf79902", // Your Botpress Bot ID
-            clientId: "0e772c62-e321-46b5-a9fb-a88c5104e067", // Your Botpress Client ID
-            host: "https://cdn.botpress.cloud/webchat",
-            messagingUrl: "https://messaging.botpress.cloud",
-            botName: "FertilizerBot",
-            showPoweredBy: false, // Remove Botpress Branding
-            theme: "light",
-            layoutWidth: "400px",
-            showCloseButton: true,
-            stylesheet: "https://cdn.botpress.cloud/webchat/v2/style.css"
-        });
+        window.addEventListener("load", function () {
+            if (window.botpressWebChat) {
+                window.botpressWebChat.init({
+                    botId: "d3aea06d-0f04-4701-bec3-b457caf79902",
+                    clientId: "0e772c62-e321-46b5-a9fb-a88c5104e067",
+                    host: "https://cdn.botpress.cloud/webchat",
+                    messagingUrl: "https://messaging.botpress.cloud",
+                    botName: "FertilizerBot",
+                    showPoweredBy: false,
+                    theme: "light",
+                    layoutWidth: "400px",
+                    showCloseButton: true,
+                    stylesheet: "https://cdn.botpress.cloud/webchat/v2/style.css"
+                });
 
-        // Ensure chatbot opens when ready
-        window.botpressWebChat.onEvent("ready", () => {
-            window.botpressWebChat.sendEvent({ type: "show" });
-        });
-
-        // Debugging: Show error if chatbot does not load
-        window.botpressWebChat.onEvent("error", (err) => {
-            console.error("Botpress Chatbot Error:", err);
+                // Ensure chatbot opens when ready
+                window.botpressWebChat.onEvent("ready", () => {
+                    window.botpressWebChat.sendEvent({ type: "show" });
+                });
+            } else {
+                console.error("Botpress WebChat failed to load.");
+            }
         });
     </script>
+
+    <!-- Fix favicon error -->
+    <link rel="icon" href="data:,">
 </body>
 </html>
-
